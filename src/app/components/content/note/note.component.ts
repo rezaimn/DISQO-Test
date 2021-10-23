@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
-
+  notes:any=[];
   constructor() { }
 
   ngOnInit(): void {
