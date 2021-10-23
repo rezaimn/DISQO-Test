@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from '../../../shared/services/http-service';
 
 @Component({
   selector: 'app-charts',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService:HttpService) { }
 
   ngOnInit(): void {
+    this.httpService.get('gists/public').subscribe(res=>{
+    })
   }
 
 }
