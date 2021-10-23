@@ -11,3 +11,8 @@
   color: white;
   font-width: 700;
 }
+
+.content-base{
+height: calc( 100vh - 75px )!important;
+  overflow-y: auto;
+}
