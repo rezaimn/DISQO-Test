@@ -1,0 +1,13 @@
+.side-menu-item{
+  color: #ddd;
+  outline: none;
+  cursor: pointer;
+  &:hover{
+    color: white;
+    font-width: 700;
+  }
+}
+.selected-item{
+  color: white;
+  font-width: 700;
+}
