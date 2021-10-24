@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {NotepadListComponent} from './notepad-list.component';
 
-import { NotpadListComponent } from './notepad-list.component';
 
-describe('NotpadListComponent', () => {
-  let component: NotpadListComponent;
-  let fixture: ComponentFixture<NotpadListComponent>;
+describe('NotepadListComponent', () => {
+  let component: NotepadListComponent;
+  let fixture: ComponentFixture<NotepadListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotpadListComponent ]
+      declarations: [ NotepadListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotpadListComponent);
+    fixture = TestBed.createComponent(NotepadListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

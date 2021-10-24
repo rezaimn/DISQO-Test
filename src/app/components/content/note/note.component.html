@@ -1,25 +1,45 @@
 <div class=" content">
   <div class="card">
     <div class="card-body">
-      <div class="row ">
-        <div class="mb-3 row">
-          <label for="note-title" class=" col-form-label">Note Title</label>
-          <div class="">
-            <input [(ngModel)]="note.title"  name="title" type="text" class="form-control mb-4" name="note-title" id="note-title"
-                   placeholder="Enter note title…">
-            <textarea [(ngModel)]="note.note"  name="note" class="form-control" name="note-description" rows="3"
-                      placeholder="Enter note description…"></textarea>
+      <form (ngSubmit)="addNewNote(noteForm)" #noteForm="ngForm">
+        <div class="row ">
+          <div class="mb-3 row">
+            <label for="note-title" class=" col-form-label">Note Title</label>
+            <div class="">
+              <input [(ngModel)]="note.title" #noteTitle="ngModel" required maxlength="255" name="title" type="text"
+                     class="form-control " name="note-title" id="note-title"
+                     placeholder="Enter note title…">
+              <div *ngIf="noteTitle.invalid && (noteTitle.dirty || noteTitle.touched|| noteForm.submitted)">
+                <div *ngIf="noteTitle.errors?.required">
+                  <p class="text-danger m-0">Title is required.</p>
+                </div>
+                <div *ngIf="noteTitle.errors?.maxLength">
+                  <p class="text-danger m-0">Title must be maximum 255 characters long.</p>
+                </div>
+              </div>
+              <textarea [(ngModel)]="note.note" #noteText="ngModel" required maxlength="1000" name="note"
+                        class="form-control mt-4" name="note-description" rows="3"
+                        placeholder="Enter note description…"></textarea>
+              <div *ngIf="noteText.invalid && (noteText.dirty || noteText.touched || noteForm.submitted)">
+                <div *ngIf="noteText.errors?.required">
+                  <p class="text-danger m-0">Note is required.</p>
+                </div>
+                <div *ngIf="noteText.errors?.maxLength">
+                  <p class="text-danger m-0">Title must be maximum 1000 characters long.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row ">
+        <div class="row ">
 
-        <div class=" btns-base float-end">
-          <button type="button" class="btn btn-success" *ngIf="status==='new'" (click)="addNewNote()">Add</button>
-          <button type="button" class="btn btn-success" *ngIf="status==='edit'" (click)="editNote()">Save</button>
-          <button type="button" class="btn btn-danger" *ngIf="status==='edit'"  (click)="deleteNote()" >Delete</button>
+          <div class=" btns-base float-end">
+            <button type="submit" class="btn btn-success" *ngIf="status==='new'">Add</button>
+            <button type="button" class="btn btn-success" *ngIf="status==='edit'" (click)="editNote()">Save</button>
+            <button type="button" class="btn btn-danger" *ngIf="status==='edit'" (click)="deleteNote()">Delete</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,9 +8,13 @@ import {Router} from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  selectedItem = 'notepads';
+  constructor(private router:Router,private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    console.log(this.router.url,'pppppppppppppppppppppppppppp')
+
   }
 
   redirectTo(path:string){

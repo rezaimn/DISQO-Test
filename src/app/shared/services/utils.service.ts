@@ -12,7 +12,7 @@ export class UtilsService {
   }
 
   generateRandomStringId() {
-    return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+    return (Math.random() + 1).toString(36).substring(7);
   }
 
   findNotepadById(id: string) {
@@ -31,7 +31,7 @@ export class UtilsService {
   saveChangesToGist(notepadList:NotepadModel[]){
     console.log(notepadList,'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
     const stringified = JSON.stringify(JSON.stringify(notepadList));
-    this.httpService.patch('gists/a4aaaa7b30c7208b9e7f6cf71cbdddd3',
+    this.httpService.patch('gists/56b62d9090b605205d1b0d0227ab15a3',
       {"description":"Edit gist","files":{"notepads.json":{"content":stringified}}}).subscribe(res=>{
     })
   }

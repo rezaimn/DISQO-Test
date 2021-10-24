@@ -18,7 +18,7 @@ export class Interceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = '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';
+    const token = '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';
     request = request.clone({headers: request.headers.set('Authorization', 'token ' + token)});
     request = request.clone({headers: request.headers.set('Accept', 'application/vnd.github.v3+json')});
     return next.handle(request).pipe(

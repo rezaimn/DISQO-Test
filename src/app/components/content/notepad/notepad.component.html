@@ -1,26 +1,37 @@
 <div class="container content">
+  <form (ngSubmit)="saveNotepad(notepadForm)" #notepadForm="ngForm" >
   <div class="row ">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <div class="mb-3 row">
         <label for="notepad-title" class=" col-form-label">Notepad Title</label>
         <div class="">
           <input [(ngModel)]="notepad.title"
+                 #title="ngModel"
                  name="title"
-                 required maxlength="255"
+                 required
+                 maxlength="255"
                  type="text"
                  class="form-control"
                  id="notepad-title"
                  placeholder="My notepad title…"
           >
+          <div *ngIf="title.invalid && (title.dirty || title.touched || notepadForm.submitted)">
+            <div *ngIf="title.errors?.required" >
+              <p class="text-danger m-0">Title is required.</p>
+            </div>
+            <div *ngIf="title.errors?.maxLength">
+              <p class="text-danger m-0">Title must be maximum 255 characters long.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 btns-base">
-      <button type="button" class="btn btn-danger">Cancel</button>
-      <button type="button" class="btn btn-success" [disabled]="notepad.notes.length === 0" (click)="saveNotepad()">Save</button>
+      <button type="submit" class="btn btn-success" >Save</button>
+      <p *ngIf="notepadForm.submitted && notepadForm.errors?.invalid" class="text-danger mt-4" >{{notepadValidationMessage}}</p>
     </div>
   </div>
-
+  </form>
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <app-note [note]="newNote"  status="new" (addNew)="addNewNote($event)" ></app-note>
@@ -35,4 +46,5 @@
       </div>
     </div>
   </div>
+
 </div>

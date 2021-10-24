@@ -23,17 +23,19 @@ export class NoteComponent implements OnInit {
   @Output() addNew = new EventEmitter<NoteModel>();
 
   constructor(
-              public dataService: DataService,
-              public utilsService: UtilsService
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  addNewNote() {
-    this.addNew.emit(this.note);
+  addNewNote(form:any) {
+    if(form.valid){
+      this.addNew.emit({...this.note});
+      form.resetForm();
+    }
   }
+
 
   deleteNote() {
     this.delete.emit(this.note);

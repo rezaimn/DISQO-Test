@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpService} from '../../../shared/services/http-service';
 import {initializeNotepad, NotepadModel} from '../../../shared/models/notepad.model';
 import {ActivatedRoute} from '@angular/router';
@@ -23,6 +23,7 @@ export class NotepadComponent implements OnInit {
     note: ''
   };
   id;
+  notepadValidationMessage = 'You need to add at least one note';
 
   constructor(
     private httpService: HttpService,
@@ -46,8 +47,8 @@ export class NotepadComponent implements OnInit {
 
   }
 
-  saveNotepad() {
-
+  saveNotepad(form:any) {
+    if(form.valid){
       const {notepad, notepadIndex} = this.utilsService.findNotepadById(this.notepad.id);
       if (notepadIndex >= 0) {
         this.dataService.notepadList[notepadIndex] = {...this.notepad};
@@ -55,7 +56,12 @@ export class NotepadComponent implements OnInit {
         this.notepad.id = this.utilsService.generateRandomStringId();
         this.dataService.notepadList.push(this.notepad);
       }
-      this.utilsService.saveChangesToGist(this.dataService.notepadList);
+      if(this.notepad.notes.length>0){
+        this.utilsService.saveChangesToGist(this.dataService.notepadList);
+      }else {
+        form.form.errors={invalid:true}
+      }
+    }
 
   }
 
@@ -63,10 +69,10 @@ export class NotepadComponent implements OnInit {
     note.id = this.utilsService.generateRandomStringId();
     const {notepadIndex} = this.utilsService.findNotepadById(this.notepad.id);
     if (notepadIndex >= 0) {
-      this.dataService.notepadList[notepadIndex].notes.push(note);
+      this.dataService.notepadList[notepadIndex].notes.push({...note});
       this.utilsService.saveChangesToGist(this.dataService.notepadList);
     } else {
-      this.notepad.notes.push(note);
+      this.notepad.notes.push({...note});
     }
   }
 
@@ -88,7 +94,7 @@ export class NotepadComponent implements OnInit {
     if (notepadIndex >= 0) {
       const noteIndex = this.utilsService.findNoteIndexById(notepad, note.id);
       if (noteIndex >= 0) {
-        this.dataService.notepadList[notepadIndex].notes[noteIndex] = note;
+        this.dataService.notepadList[notepadIndex].notes[noteIndex] = {...note};
         this.utilsService.saveChangesToGist(this.dataService.notepadList);
       }
     }

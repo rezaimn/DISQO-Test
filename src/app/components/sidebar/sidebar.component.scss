@@ -1,20 +1,21 @@
 @import "./src/app/app.component";
 
-.side-menu-item{
-  color: #ddd;
+.list-group-item{
+  color: #aaa;
   outline: none;
   cursor: pointer;
   &:hover{
     color: white;
-    font-width: 700;
+    font-weight: 700!important;
   }
-}
-.selected-item{
-  color: white;
-  font-width: 700;
 }
 
 .content-base{
 height: calc( 100vh - 75px )!important;
   overflow-y: auto;
+}
+
+a.router-link-active {
+  color: white;
+  font-weight: 700!important;
 }
