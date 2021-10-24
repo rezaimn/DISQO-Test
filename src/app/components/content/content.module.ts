@@ -6,10 +6,7 @@ import {ChartsComponent} from './charts/charts.component';
 import {ContentRoutingModule} from './content-routing.module';
 import {ContentComponent} from './content.component';
 import {SharedModule} from '../../shared/shared.module';
-import {Interceptor} from '../../shared/services/interceptor';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {HttpService} from '../../shared/services/http-service';
-
+import {NotepadListComponent} from './notepad-list/notepad-list.component';
 
 
 @NgModule({
@@ -17,7 +14,8 @@ import {HttpService} from '../../shared/services/http-service';
     ContentComponent,
     NotepadComponent,
     NoteComponent,
-    ChartsComponent
+    ChartsComponent,
+    NotepadListComponent
   ],
   imports: [
     CommonModule,

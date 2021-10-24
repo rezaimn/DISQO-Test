@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <h4>Notepad List</h4>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <button type="button" class="btn btn-success float-end" (click)="redirectToCreateNewNotepadPage()">Add New Notepad</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+    <tr class="text-center">
+      <th scope="col">#</th>
+      <th scope="col">Notepad Title</th>
+      <th scope="col">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="text-center" *ngFor="let notepad of dataService.notepadList;let i=index">
+      <td >{{i+1}}</td>
+      <td>{{notepad.title}}</td>
+      <td>
+        <div >
+          <button type="button" class="btn btn-primary mx-2">Edit</button>
+          <button type="button" class="btn btn-danger mx-2">Delete</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

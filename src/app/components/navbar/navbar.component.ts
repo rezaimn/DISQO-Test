@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataService: DataService) {
+  }
 
   ngOnInit(): void {
   }

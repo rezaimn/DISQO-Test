@@ -4,6 +4,7 @@ import {NotepadComponent} from './notepad/notepad.component';
 import {NoteComponent} from './note/note.component';
 import {ChartsComponent} from './charts/charts.component';
 import {ContentComponent} from './content.component';
+import {NotepadListComponent} from './notepad-list/notepad-list.component';
 
 
 const routes: Routes = [
@@ -11,14 +12,18 @@ const routes: Routes = [
     path: '',
     component: ContentComponent,
     children:[
-      {path: '', pathMatch: 'full', redirectTo: 'notepad'},
+      {path: '', pathMatch: 'full', redirectTo: 'notepads'},
+      {
+        path: 'notepads',
+        component: NotepadListComponent,
+      },
       {
         path: 'notepad',
         component: NotepadComponent,
       },
       {
-        path: 'notepad:/id/note',
-        component: NoteComponent
+        path: 'notepads/:id',
+        component: NotepadComponent,
       },
       {
         path: 'charts',

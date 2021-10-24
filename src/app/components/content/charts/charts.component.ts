@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../../shared/services/http-service';
+import {DataService} from '../../../shared/services/data.service';
 
 @Component({
   selector: 'app-charts',
@@ -8,26 +9,13 @@ import {HttpService} from '../../../shared/services/http-service';
 })
 export class ChartsComponent implements OnInit {
 
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService: HttpService, public dataService: DataService) {
+    this.dataService.pageTitle = 'Public Gists Charts';
+  }
 
   ngOnInit(): void {
-    this.httpService.get('gists/a4aaaa7b30c7208b9e7f6cf71cbdddd3').subscribe(res=>{
-      console.log(JSON.parse(JSON.parse(res.files['notes.json'].content)),'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    })
-    const test={
-      test:'test',
-      array:[
-        {
-          id:0
-        },
-        {
-          id:1
-        }
-      ]
-    }
-    const stringified =JSON.stringify(JSON.stringify(test));
-    this.httpService.patch('gists/a4aaaa7b30c7208b9e7f6cf71cbdddd3',
-      {"description":"Edit gist","files":{"notes.json":{"content":stringified}}}).subscribe(res=>{
+    this.httpService.get('gists/public').subscribe(res => {
+      console.log(res, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     })
   }
 

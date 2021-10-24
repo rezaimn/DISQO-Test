@@ -1,43 +1,25 @@
-<div class="container content">
-  <div class="row ">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <div class="mb-3 row">
-        <label for="note-title" class=" col-form-label">Note Title</label>
-        <div class="">
-          <input type="text" class="form-control mb-4" name="note-title" id="note-title" placeholder="Enter note title…" >
-          <textarea class="form-control"  name="note-description" rows="3" placeholder="Enter note description…"></textarea>
+<div class=" content">
+  <div class="card">
+    <div class="card-body">
+      <div class="row ">
+        <div class="mb-3 row">
+          <label for="note-title" class=" col-form-label">Note Title</label>
+          <div class="">
+            <input [(ngModel)]="note.title"  name="title" type="text" class="form-control mb-4" name="note-title" id="note-title"
+                   placeholder="Enter note title…">
+            <textarea [(ngModel)]="note.note"  name="note" class="form-control" name="note-description" rows="3"
+                      placeholder="Enter note description…"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+
+        <div class=" btns-base float-end">
+          <button type="button" class="btn btn-success" *ngIf="status==='new'" (click)="addNewNote()">Add</button>
+          <button type="button" class="btn btn-success" *ngIf="status==='edit'" (click)="editNote()">Save</button>
+          <button type="button" class="btn btn-danger" *ngIf="status==='edit'"  (click)="deleteNote()" >Delete</button>
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 btns-base">
-      <button type="button" class="btn btn-danger">Cancel</button>
-      <button type="button" class="btn btn-success">Save</button>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <h4 class="mb-4">Notes</h4>
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Note Title</th>
-        <th scope="col">Note Description</th>
-        <th scope="col">Options</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let note of notes;let i=index">
-        <td>{{i}}</td>
-        <td>{{note.title}}</td>
-        <td>{{note.description}}</td>
-        <td>
-          <div class=" btns-base">
-            <button type="button" class="btn btn-primary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
   </div>
 </div>
