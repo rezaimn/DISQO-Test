@@ -1,5 +1,49 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+$greenColor:#57B93E;
+$blueColor:#39ACDC;
+$redColor:#EC3646;
+$textAndInputColor: #333;
+$PlaceholderColor: #AAA;
+$BorderColor: #CCC;
+$BodyBackgroundColor: #EEE;
 
 html{
   overflow: hidden;
+}
+body{
+  background-color: $BodyBackgroundColor!important;
+  font-family: Arial;
+}
+.btn{
+  font-size: 14px;
+}
+.btn-success{
+  background-color: $greenColor!important;
+  border-color: $greenColor!important;
+}
+
+.btn-primary{
+  background-color: $blueColor!important;
+  border-color: $blueColor!important;
+}
+.btn-danger{
+  background-color: $redColor!important;
+  border-color: $redColor!important;
+}
+.form-control{
+  color: $textAndInputColor!important;
+  border-color: $BorderColor!important;
+}
+
+::placeholder {
+  color: $PlaceholderColor;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $PlaceholderColor;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $PlaceholderColor;
 }

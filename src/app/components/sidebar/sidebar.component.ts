@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,16 +7,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  selectedItem = 'notepads';
-  constructor(private router:Router,private route: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    console.log(this.router.url,'pppppppppppppppppppppppppppp')
 
   }
 
-  redirectTo(path:string){
-    this.router.navigate(['/'+path]);
-  }
 }
