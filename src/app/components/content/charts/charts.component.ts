@@ -15,7 +15,6 @@ export class ChartsComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.get('gists/public').subscribe(res => {
-      console.log(res, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     })
   }
 

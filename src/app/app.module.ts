@@ -8,6 +8,7 @@ import { HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,7 @@ import {BrowserModule} from '@angular/platform-browser';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
 

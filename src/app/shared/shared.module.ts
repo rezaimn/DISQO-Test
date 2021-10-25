@@ -6,7 +6,6 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {Interceptor} from './interceptor';
 import {DataService} from './services/data.service';
 import {UtilsService} from './services/utils.service';
-import {BrowserModule} from '@angular/platform-browser';
 
 
 @NgModule({
